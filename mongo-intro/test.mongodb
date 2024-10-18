@@ -1,0 +1,19 @@
+db.getMongo().setDBs()
+
+use("midb")
+
+db.frutas.insertOne({
+    nombre: "Pera",
+    color: "verde",
+    expira: new Date(2024, 11, 25)
+})
+
+use("midb")
+db.frutas.find()
+
+use("midb") //operadores son los key $gt - greater than(>), $gte(>=),
+//$lt - low than(<), $lte(<=)
+db.frutas.find({ color: "verde" })
+db.frutas.find({ expira: { $gt: new Date(2024, 9, 16) } })
+
+//mongodb://root:example@localhost:27017/

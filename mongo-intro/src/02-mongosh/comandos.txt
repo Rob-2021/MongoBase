@@ -1,0 +1,7 @@
+mongosh "url"
+
+show dbs
+
+use("store_clothes")
+
+db.products.find()
