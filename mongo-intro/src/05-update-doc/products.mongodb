@@ -1,0 +1,25 @@
+use("store_fruits")
+
+db.products.insertOne({
+    _id: 1,
+    name: "Pera",
+    color: "Verde",
+    descripcion: "Fruta Madura",
+    proveedor: "Huertas Julian"
+})
+
+db.products.insertOne({
+    _id: 2,
+    name: "Manzana",
+    color: "Roja",
+    descripcion: "Fruta Fresca",
+    proveedor: "Huertas Julian"
+})
+
+db.products.insertOne({
+    _id: 3,
+    name: "Uva",
+    color: "Morada",
+    descripcion: "Fruta Fresca",
+    proveedor: "Huertas Julian"
+})

@@ -1,0 +1,15 @@
+use("store_fruits")
+
+db.products.updateOne(
+    { _id: 2 },
+    { $set: { descripcion: "expirado" } }
+)
+
+db.products.updateOne(
+    { _id: 3 },
+    {
+        $set: {
+            name: "Manzana M1",
+            color: "Roja M1V"
+        }
+    })

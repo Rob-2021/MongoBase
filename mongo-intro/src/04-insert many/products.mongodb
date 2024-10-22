@@ -1,0 +1,28 @@
+use("tienda_db")
+
+//db.products.drop()
+
+db.products.insertMany([
+    {
+        name: "Laptop",
+        price: 1000
+    },
+    {
+        name: "Mouse",
+        price: 20
+    },
+    {
+        name: "Keyboard",
+        price: 50
+    },
+    {
+        name: "Monitor",
+        price: 200
+    },
+    {
+        name: "Headphones",
+        price: 100
+    }
+],{
+    ordered: false
+})

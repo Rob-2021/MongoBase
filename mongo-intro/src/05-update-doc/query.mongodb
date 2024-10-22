@@ -1,0 +1,3 @@
+use("store_fruits")
+
+db.products.find()

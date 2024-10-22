@@ -1,0 +1,3 @@
+use("tienda_db")
+
+db.products.find()
