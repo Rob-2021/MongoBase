@@ -1,0 +1,5 @@
+use("store_fruits")
+
+db.products.find()
+
+// db.products.find({ color: "Verde" })

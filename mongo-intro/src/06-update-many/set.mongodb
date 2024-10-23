@@ -1,0 +1,11 @@
+use("store_fruits")
+
+// db.products.find({ color: "Verde" })
+
+db.products.updateMany({ color: "Verde" },
+    {
+        $set: {
+            proveedor: "Del Valle"
+        }
+    }
+)

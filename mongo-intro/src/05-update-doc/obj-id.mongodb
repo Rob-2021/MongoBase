@@ -1,0 +1,21 @@
+use("store_fruits")
+
+// db.products.updateOne(
+//     { _id: ObjectId("6718dc88538557f3e9037340")},
+//     { $set: { 
+//         descripcion: "expirado" } }
+// )
+
+// db.products.updateOne(
+//     { _id: ObjectId("6718dc88538557f3e9037340")},
+//     { $inc: {
+//         price:20
+//     } }
+// )
+
+db.products.updateOne(
+    { _id: ObjectId("6718dc88538557f3e9037340")},
+    { $unset: {
+        price: ""
+    } }
+)
