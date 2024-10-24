@@ -1,0 +1,22 @@
+use("school_db")
+
+// db.inventario.updateOne(
+//     { _id: 3 },
+//     {
+//         $pull: {
+//             tags: "new"
+//         }
+//     }
+// )
+
+//pull = remueve los elementos que coincidan con los valores especificados
+
+db.inventario.updateMany({},
+    {
+        $push: {
+            tags: {
+                $in: ["appliance", "school"]
+            }
+        }
+    }
+)

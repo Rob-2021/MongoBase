@@ -1,0 +1,20 @@
+use("school_db")
+
+db.inventario.updateMany(
+    { },
+    {
+        $push: {
+            tags: "new"
+        }
+    }
+)
+
+db.inventario.updateMany({},
+    {
+        $push: {
+            tags: {
+                $each: ["new1", "new2", "new3"]
+            }
+        }
+    }
+)

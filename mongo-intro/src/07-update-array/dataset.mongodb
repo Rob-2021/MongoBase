@@ -1,0 +1,56 @@
+use("school_db")
+
+db.inventario.drop()
+
+db.inventario.insertMany([
+    {
+        _id: 1,
+        item: {
+            name: "item ab",
+            code: "123",
+            description: "Linea descripcion"
+        }, 
+        qty:15, 
+        tags: ["appliance", "school"]
+    },
+    {
+        _id: 2,
+        item: {
+            name: "item bb",
+            code: "234",
+            description: "Linea descripcion"
+        }, 
+        qty:20, 
+        tags: ["appliance", "school"]
+    },
+    {
+        _id: 3,
+        item: {
+            name: "item cb",
+            code: "345",
+            description: "Linea descripcion"
+        }, 
+        qty:25, 
+        tags: ["school"]
+    },
+    {
+        _id: 4,
+        item: {
+            name: "item db",
+            code: "456",
+            description: "Linea descripcion"
+        }, 
+        qty:30, 
+        tags: ["appliance"]
+    },
+    {
+        _id: 5,
+        item: {
+            name: "item eb",
+            code: "567",
+            description: "Linea descripcion"
+        }, 
+        qty:35, 
+        tags: ["school"]
+    }
+])
