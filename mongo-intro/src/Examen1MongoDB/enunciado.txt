@@ -1,0 +1,88 @@
+### Examen # 1 MongoDB
+
+Se le acaba de contratatar como el desarrollador de una base de datos para un supermercado nuevo. El jefe esta preocupado como guardar y gestionar sus productos en la base de datos. 
+
+1. El jefe acaba de adquirir  varios productos y necesita registrar en una base de datos y para esto te pide ayuda:
+
+| nombre               | categoria   | fecha_elaboracion | fecha_vencimiento | stock |
+| -------------------- | ----------- | -------------------- | --------------------- | ----- |
+| Yogurt Natural       | Lácteos     | 2024-10-02          | 2024-12-15           | 54    |
+| Salami Italiano      | Embutidos   | 2024-10-07          | 2024-11-20           | 32    |
+| Lechuga Romana       | Verduras    | 2024-10-10          | 2024-11-28           | 65    |
+| Plátano Maduro       | Frutas      | 2024-10-05          | 2024-12-10           | 47    |
+| Queso Gouda          | Lácteos     | 2024-10-08          | 2024-12-05           | 82    |
+| Chorizo Español      | Embutidos   | 2024-10-15          | 2024-11-25           | 73    |
+| Tomate Cherry        | Verduras    | 2024-10-01          | 2024-11-15           | 22    |
+| Manzana Verde        | Frutas      | 2024-10-03          | 2024-12-18           | 90    |
+| Mantequilla          | Lácteos     | 2024-10-12          | 2024-11-30           | 45    |
+| Jamón de Pavo        | Embutidos   | 2024-10-09          | 2024-12-02           | 67    |
+| Zanahoria            | Verduras    | 2024-10-06          | 2024-11-22           | 33    |
+| Uvas                 | Frutas      | 2024-10-14          | 2024-12-25           | 99    |
+| Leche Deslactosada   | Lácteos     | 2024-10-11          | 2024-11-18           | 18    |
+| Salchicha Viena      | Embutidos   | 2024-10-13          | 2024-12-08           | 39    |
+| Espinaca             | Verduras    | 2024-10-04          | 2024-11-27           | 50    |
+| Pera Anjou           | Frutas      | 2024-10-20          | 2024-12-12           | 76    |
+| Queso Azul           | Lácteos     | 2024-10-16          | 2024-12-09           | 24    |
+| Mortadela            | Embutidos   | 2024-10-21          | 2024-11-29           | 88    |
+| Pimiento Verde       | Verduras    | 2024-10-17          | 2024-12-20           | 14    |
+| Mango Ataulfo        | Frutas      | 2024-10-19          | 2024-12-30           | 64    |
+| Yogurt Griego        | Lácteos     | 2024-10-25          | 2024-11-16           | 40    |
+| Chorizo Argentino    | Embutidos   | 2024-10-26          | 2024-11-23           | 36    |
+| Calabacín            | Verduras    | 2024-10-28          | 2024-11-24           | 27    |
+| Sandía               | Frutas      | 2024-10-27          | 2024-12-01           | 49    |
+| Queso Cheddar        | Lácteos     | 2024-10-23          | 2024-11-26           | 53    |
+| Jamón Ibérico        | Embutidos   | 2024-10-29          | 2024-12-04           | 61    |
+| Pepino               | Verduras    | 2024-10-30          | 2024-11-17           | 26    |
+| Piña                 | Frutas      | 2024-10-24          | 2024-12-19           | 30    |
+| Leche de Almendra    | Lácteos     | 2024-10-22          | 2024-12-13           | 42    |
+| Salchichón           | Embutidos   | 2024-10-31          | 2024-12-28           | 15    |
+| Brócoli              | Verduras    | 2024-10-18          | 2024-11-19           | 56    |
+| Melón                | Frutas      | 2024-10-06          | 2024-11-21           | 21    |
+| Yogurt de Coco       | Lácteos     | 2024-10-15          | 2024-12-15           | 33    |
+| Salami Suizo         | Embutidos   | 2024-10-14          | 2024-11-30           | 43    |
+| Apio                 | Verduras    | 2024-10-11          | 2024-12-11           | 20    |
+| Manzana Roja         | Frutas      | 2024-10-08          | 2024-12-09           | 77    |
+| Queso Brie           | Lácteos     | 2024-10-07          | 2024-12-21           | 48    |
+| Chorizo Picante      | Embutidos   | 2024-10-12          | 2024-11-22           | 60    |
+| Col Rizada           | Verduras    | 2024-10-09          | 2024-11-29           | 19    |
+| Fresa                | Frutas      | 2024-10-13          | 2024-12-10           | 66    |
+| Queso Parmesano      | Lácteos     | 2024-10-05          | 2024-12-16           | 29    |
+| Jamón Serrano        | Embutidos   | 2024-10-03          | 2024-11-27           | 52    |
+
+>Nota: Para poder crear fechas en javascript utilizar el siguiente formato `new Date(2024, 11, 17); // el mes es indexado como 0=Enero y 11=Diciembre`
+
+2. El jefe necesita refrigerar las verduras, pero no sabe que productos son, tu tarea es obtener todos los registros donde la `categoria` del producto sean `verduras`.
+
+3. El jefe ya esta tranquilo con sus productos guardados. Pero tiene un nuevo problema, necesita saber cuantos productos venceran hasta 30 de noviembre: "`new Date(2024, 10, 30)`"
+
+4. El jefe decide lanzar una `oferta` a sus clientes por ser un supermercado nuevo y poder competir en el mercado. Nos exige añadir un nuevo campo a los productos que tengan la fecha de vencimiento antes del 30 de noviembre: "`new Date(2024, 10, 30)`"
+
+
+>Ejemplo para el producto:
+```ts
+{
+  nombre: "Salami Italiano",
+  categoria: "Embutidos",
+  fecha_elaboracion: new Date(2024,9,7),
+  fecha_vencimiento: new Date(2024,10,20),
+  stock: 32,
+
+  oferta: true // nuevo campo
+}
+```
+
+5. El jefe esta muy contento con el trabajo, acaba de aumentar nuestro sueldo, ahora le preocupa saber que productos tienen el stock entre 10 a 30 unidades.
+
+>Nota: Recordar que: 
+>
+> * $gt: Selecciona valores mayores que el especificado.
+> * $gte: Selecciona valores mayores o iguales que el especificado.
+> * $lt: Selecciona valores menores que el especificado.
+> * $lte: Selecciona valores menores o iguales que el especificado.
+
+>Ejemplo:
+>```ts
+>db.products.find({
+>  price: { $gte: 50, $lte: 150 }
+>});
+>```

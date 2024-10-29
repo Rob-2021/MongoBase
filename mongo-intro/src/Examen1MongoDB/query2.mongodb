@@ -1,0 +1,7 @@
+use("supermercado_db")
+
+// 2. El jefe necesita refrigerar las verduras, pero no sabe que productos son, tu tarea es obtener todos los registros donde la `categoria` del producto sean `verduras`.
+
+db.productos.find({
+    categoria: "Verduras"
+})

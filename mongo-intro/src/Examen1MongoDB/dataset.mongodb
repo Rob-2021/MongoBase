@@ -1,0 +1,348 @@
+// ### Examen # 1 MongoDB
+
+// Se le acaba de contratatar como el desarrollador de una base de datos para un supermercado nuevo. El jefe esta preocupado como guardar y gestionar sus productos en la base de datos. 
+
+// 1. El jefe acaba de adquirir  varios productos y necesita registrar en una base de datos y para esto te pide ayuda:
+
+// | nombre               | categoria   | fecha_elaboracion | fecha_vencimiento | stock |
+// | -------------------- | ----------- | -------------------- | --------------------- | ----- |
+// | Yogurt Natural       | Lácteos     | 2024-10-02          | 2024-12-15           | 54    |
+// | Salami Italiano      | Embutidos   | 2024-10-07          | 2024-11-20           | 32    |
+// | Lechuga Romana       | Verduras    | 2024-10-10          | 2024-11-28           | 65    |
+// | Plátano Maduro       | Frutas      | 2024-10-05          | 2024-12-10           | 47    |
+// | Queso Gouda          | Lácteos     | 2024-10-08          | 2024-12-05           | 82    |
+// | Chorizo Español      | Embutidos   | 2024-10-15          | 2024-11-25           | 73    |
+// | Tomate Cherry        | Verduras    | 2024-10-01          | 2024-11-15           | 22    |
+// | Manzana Verde        | Frutas      | 2024-10-03          | 2024-12-18           | 90    |
+// | Mantequilla          | Lácteos     | 2024-10-12          | 2024-11-30           | 45    |
+// | Jamón de Pavo        | Embutidos   | 2024-10-09          | 2024-12-02           | 67    |
+// | Zanahoria            | Verduras    | 2024-10-06          | 2024-11-22           | 33    |
+// | Uvas                 | Frutas      | 2024-10-14          | 2024-12-25           | 99    |
+// | Leche Deslactosada   | Lácteos     | 2024-10-11          | 2024-11-18           | 18    |
+// | Salchicha Viena      | Embutidos   | 2024-10-13          | 2024-12-08           | 39    |
+// | Espinaca             | Verduras    | 2024-10-04          | 2024-11-27           | 50    |
+// | Pera Anjou           | Frutas      | 2024-10-20          | 2024-12-12           | 76    |
+// | Queso Azul           | Lácteos     | 2024-10-16          | 2024-12-09           | 24    |
+// | Mortadela            | Embutidos   | 2024-10-21          | 2024-11-29           | 88    |
+// | Pimiento Verde       | Verduras    | 2024-10-17          | 2024-12-20           | 14    |
+// | Mango Ataulfo        | Frutas      | 2024-10-19          | 2024-12-30           | 64    |
+// | Yogurt Griego        | Lácteos     | 2024-10-25          | 2024-11-16           | 40    |
+// | Chorizo Argentino    | Embutidos   | 2024-10-26          | 2024-11-23           | 36    |
+// | Calabacín            | Verduras    | 2024-10-28          | 2024-11-24           | 27    |
+// | Sandía               | Frutas      | 2024-10-27          | 2024-12-01           | 49    |
+// | Queso Cheddar        | Lácteos     | 2024-10-23          | 2024-11-26           | 53    |
+// | Jamón Ibérico        | Embutidos   | 2024-10-29          | 2024-12-04           | 61    |
+// | Pepino               | Verduras    | 2024-10-30          | 2024-11-17           | 26    |
+// | Piña                 | Frutas      | 2024-10-24          | 2024-12-19           | 30    |
+// | Leche de Almendra    | Lácteos     | 2024-10-22          | 2024-12-13           | 42    |
+// | Salchichón           | Embutidos   | 2024-10-31          | 2024-12-28           | 15    |
+// | Brócoli              | Verduras    | 2024-10-18          | 2024-11-19           | 56    |
+// | Melón                | Frutas      | 2024-10-06          | 2024-11-21           | 21    |
+// | Yogurt de Coco       | Lácteos     | 2024-10-15          | 2024-12-15           | 33    |
+// | Salami Suizo         | Embutidos   | 2024-10-14          | 2024-11-30           | 43    |
+// | Apio                 | Verduras    | 2024-10-11          | 2024-12-11           | 20    |
+// | Manzana Roja         | Frutas      | 2024-10-08          | 2024-12-09           | 77    |
+// | Queso Brie           | Lácteos     | 2024-10-07          | 2024-12-21           | 48    |
+// | Chorizo Picante      | Embutidos   | 2024-10-12          | 2024-11-22           | 60    |
+// | Col Rizada           | Verduras    | 2024-10-09          | 2024-11-29           | 19    |
+// | Fresa                | Frutas      | 2024-10-13          | 2024-12-10           | 66    |
+// | Queso Parmesano      | Lácteos     | 2024-10-05          | 2024-12-16           | 29    |
+// | Jamón Serrano        | Embutidos   | 2024-10-03          | 2024-11-27           | 52    |
+
+use("supermercado_db");
+
+db.productos.insertMany([
+    {
+        nombre: "Yogurt Natural",
+        categoria: "Lácteos",
+        fecha_elaboracion: new Date(2024, 9, 2),
+        fecha_vencimiento: new Date(2024, 11, 15),
+        stock: 54
+    },
+    {
+        nombre: "Salami Italiano",
+        categoria: "Embutidos",
+        fecha_elaboracion: new Date(2024, 9, 7),
+        fecha_vencimiento: new Date(2024, 10, 20),
+        stock: 32
+    },
+    {
+        nombre: "Lechuga Romana",
+        categoria: "Verduras",
+        fecha_elaboracion: new Date(2024, 9, 10),
+        fecha_vencimiento: new Date(2024, 10, 28),
+        stock: 65
+    },
+    {
+        nombre: "Plátano Maduro",
+        categoria: "Frutas",
+        fecha_elaboracion: new Date(2024, 9, 5),
+        fecha_vencimiento: new Date(2024, 11, 10),
+        stock: 47
+    },
+    {
+        nombre: "Queso Gouda",
+        categoria: "Lácteos",
+        fecha_elaboracion: new Date(2024, 9, 8),
+        fecha_vencimiento: new Date(2024, 11, 5),
+        stock: 82
+    },
+    {
+        nombre: "Chorizo Español",
+        categoria: "Embutidos",
+        fecha_elaboracion: new Date(2024, 9, 15),
+        fecha_vencimiento: new Date(2024, 10, 25),
+        stock: 73
+    },
+    {
+        nombre: "Tomate Cherry",
+        categoria: "Verduras",
+        fecha_elaboracion: new Date(2024, 9, 1),
+        fecha_vencimiento: new Date(2024, 10, 15),
+        stock: 22
+    },
+    {
+        nombre: "Manzana Verde",
+        categoria: "Frutas",
+        fecha_elaboracion: new Date(2024, 9, 3),
+        fecha_vencimiento: new Date(2024, 11, 18),
+        stock: 90
+    },
+    {
+        nombre: "Mantequilla",
+        categoria: "Lácteos",
+        fecha_elaboracion: new Date(2024, 9, 12),
+        fecha_vencimiento: new Date(2024, 10, 30),
+        stock: 45
+    },
+    {
+        nombre: "Jamón de Pavo",
+        categoria: "Embutidos",
+        fecha_elaboracion: new Date(2024, 9, 9),
+        fecha_vencimiento: new Date(2024, 11, 2),
+        stock: 67
+    },
+    {
+        nombre: "Zanahoria",
+        categoria: "Verduras",
+        fecha_elaboracion: new Date(2024, 9, 6),
+        fecha_vencimiento: new Date(2024, 10, 22),
+        stock: 33
+    },
+    {
+        nombre: "Uvas",
+        categoria: "Frutas",
+        fecha_elaboracion: new Date(2024, 9, 14),
+        fecha_vencimiento: new Date(2024, 11, 25),
+        stock: 99
+    },
+    {
+        nombre: "Leche Deslactosada",
+        categoria: "Lácteos",
+        fecha_elaboracion: new Date(2024, 9, 11),
+        fecha_vencimiento: new Date(2024, 10, 18),
+        stock: 18
+    },
+    {
+        nombre: "Salchicha Viena",
+        categoria: "Embutidos",
+        fecha_elaboracion: new Date(2024, 9, 13),
+        fecha_vencimiento: new Date(2024, 11, 8),
+        stock: 39
+    },
+    {
+        nombre: "Espinaca",
+        categoria: "Verduras",
+        fecha_elaboracion: new Date(2024, 9, 4),
+        fecha_vencimiento: new Date(2024, 10, 27),
+        stock: 50
+    },
+    {
+        nombre: "Pera Anjou",
+        categoria: "Frutas",
+        fecha_elaboracion: new Date(2024, 9, 20),
+        fecha_vencimiento: new Date(2024, 11, 12),
+        stock: 76
+    },
+    {
+        nombre: "Queso Azul",
+        categoria: "Lácteos",
+        fecha_elaboracion: new Date(2024, 9, 16),
+        fecha_vencimiento: new Date(2024, 11, 9),
+        stock: 24
+    },
+    {
+        nombre: "Mortadela",
+        categoria: "Embutidos",
+        fecha_elaboracion: new Date(2024, 9, 21),
+        fecha_vencimiento: new Date(2024, 10, 29),
+        stock: 88
+    },
+    {
+        nombre: "Pimiento Verde",
+        categoria: "Verduras",
+        fecha_elaboracion: new Date(2024, 9, 17),
+        fecha_vencimiento: new Date(2024, 11, 20),
+        stock: 14
+    },
+    {
+        nombre: "Mango Ataulfo",
+        categoria: "Frutas",
+        fecha_elaboracion: new Date(2024, 9, 19),
+        fecha_vencimiento: new Date(2024, 11, 30),
+        stock: 64
+    },
+    {
+        nombre: "Yogurt Griego",
+        categoria: "Lácteos",
+        fecha_elaboracion: new Date(2024, 9, 25),
+        fecha_vencimiento: new Date(2024, 10, 16),
+        stock: 40
+    },
+    {
+        nombre: "Chorizo Argentino",
+        categoria: "Embutidos",
+        fecha_elaboracion: new Date(2024, 9, 26),
+        fecha_vencimiento: new Date(2024, 10, 23),
+        stock: 36
+    },
+    {
+        nombre: "Calabacín",
+        categoria: "Verduras",
+        fecha_elaboracion: new Date(2024, 9, 28),
+        fecha_vencimiento: new Date(2024, 10, 24),
+        stock: 27
+    },
+    {
+        nombre: "Sandía",
+        categoria: "Frutas",
+        fecha_elaboracion: new Date(2024, 9, 27),
+        fecha_vencimiento: new Date(2024, 11, 1),
+        stock: 49
+    },
+    {
+        nombre: "Queso Cheddar",
+        categoria: "Lácteos",
+        fecha_elaboracion: new Date(2024, 9, 23),
+        fecha_vencimiento: new Date(2024, 10, 26),
+        stock: 53
+    },
+    {
+        nombre: "Jamón Ibérico",
+        categoria: "Embutidos",
+        fecha_elaboracion: new Date(2024, 9, 29),
+        fecha_vencimiento: new Date(2024, 11, 4),
+        stock: 61
+    },
+    {
+        nombre: "Pepino",
+        categoria: "Verduras",
+        fecha_elaboracion: new Date(2024, 9, 30),
+        fecha_vencimiento: new Date(2024, 10, 17),
+        stock: 26
+    },
+    {
+        nombre: "Piña",
+        categoria: "Frutas",
+        fecha_elaboracion: new Date(2024, 9, 24),
+        fecha_vencimiento: new Date(2024, 11, 19),
+        stock: 30
+    },
+    {
+        nombre: "Leche de Almendra",
+        categoria: "Lácteos",
+        fecha_elaboracion: new Date(2024, 9, 22),
+        fecha_vencimiento: new Date(2024, 11, 13),
+        stock: 42
+    },
+    {
+        nombre: "Salchichón",
+        categoria: "Embutidos",
+        fecha_elaboracion: new Date(2024, 9, 31),
+        fecha_vencimiento: new Date(2024, 11, 28),
+        stock: 15
+    },
+    {
+        nombre: "Brócoli",
+        categoria: "Verduras",
+        fecha_elaboracion: new Date(2024, 9, 18),
+        fecha_vencimiento: new Date(2024, 10, 19),
+        stock: 56
+    },
+    {
+        nombre: "Melón",
+        categoria: "Frutas",
+        fecha_elaboracion: new Date(2024, 9, 6),
+        fecha_vencimiento: new Date(2024, 10, 21),
+        stock: 21
+    },
+    {
+        nombre: "Yogurt de Coco",
+        categoria: "Lácteos",
+        fecha_elaboracion: new Date(2024, 9, 15),
+        fecha_vencimiento: new Date(2024, 11, 15),
+        stock: 33
+    },
+    {
+        nombre: "Salami Suizo",
+        categoria: "Embutidos",
+        fecha_elaboracion: new Date(2024, 9, 14),
+        fecha_vencimiento: new Date(2024, 10, 30),
+        stock: 43
+    },
+    {
+        nombre: "Apio",
+        categoria: "Verduras",
+        fecha_elaboracion: new Date(2024, 9, 11),
+        fecha_vencimiento: new Date(2024, 11, 11),
+        stock: 20
+    },
+    {
+        nombre: "Manzana Roja",
+        categoria: "Frutas",
+        fecha_elaboracion: new Date(2024, 9, 8),
+        fecha_vencimiento: new Date(2024, 11, 9),
+        stock: 77
+    },
+    {
+        nombre: "Queso Brie",
+        categoria: "Lácteos",
+        fecha_elaboracion: new Date(2024, 9, 7),
+        fecha_vencimiento: new Date(2024, 11, 21),
+        stock: 48
+    },
+    {
+        nombre: "Chorizo Picante",
+        categoria: "Embutidos",
+        fecha_elaboracion: new Date(2024, 9, 12),
+        fecha_vencimiento: new Date(2024, 10, 22),
+        stock: 60
+    },
+    {
+        nombre: "Col Rizada",
+        categoria: "Verduras",
+        fecha_elaboracion: new Date(2024, 9, 9),
+        fecha_vencimiento: new Date(2024, 10, 29),
+        stock: 19
+    },
+    {
+        nombre: "Fresa",
+        categoria: "Frutas",
+        fecha_elaboracion: new Date(2024, 9, 13),
+        fecha_vencimiento: new Date(2024, 11, 10),
+        stock: 66
+    },
+    {
+        nombre: "Queso Parmesano",
+        categoria: "Lácteos",
+        fecha_elaboracion: new Date(2024, 9, 5),
+        fecha_vencimiento: new Date(2024, 11, 16),
+        stock: 29
+    },
+    {
+        nombre: "Jamón Serrano",
+        categoria: "Embutidos",
+        fecha_elaboracion: new Date(2024, 9, 3),
+        fecha_vencimiento: new Date(2024, 10, 27),
+        stock: 52
+    }])

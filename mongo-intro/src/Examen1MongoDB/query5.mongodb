@@ -1,0 +1,10 @@
+use("supermercado_db")
+
+// 5. El jefe esta muy contento con el trabajo, acaba de aumentar nuestro sueldo, ahora le preocupa saber que productos tienen el stock entre 10 a 30 unidades.
+
+db.productos.find({
+    stock: {
+        $gte: 10,
+        $lte: 30
+    }
+})

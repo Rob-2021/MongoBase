@@ -1,0 +1,13 @@
+use("supermercado_db")
+
+// 4. El jefe decide lanzar una `oferta` a sus clientes por ser un supermercado nuevo y poder competir en el mercado. Nos exige añadir un nuevo campo a los productos que tengan la fecha de vencimiento antes del 30 de noviembre: "`new Date(2024, 10, 30)`"
+
+db.productos.updateMany({
+    fecha_vencimiento: {
+        $lte: new Date(2024, 10, 30)
+    }
+}, {
+    $set: {
+        oferta: true
+    }
+})

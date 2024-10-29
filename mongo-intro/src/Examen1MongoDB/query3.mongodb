@@ -1,0 +1,9 @@
+use("supermercado_db")
+
+// 3. El jefe ya esta tranquilo con sus productos guardados. Pero tiene un nuevo problema, necesita saber cuantos productos venceran hasta 30 de noviembre: "`new Date(2024, 10, 30)`"
+
+db.productos.find({
+    fecha_vencimiento: {
+        $lte: new Date(2024, 10, 30)
+    }
+})
